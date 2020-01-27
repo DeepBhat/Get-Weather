@@ -18,17 +18,15 @@ import pyodbc
 import urllib
 
 if __name__ == '__main__':
-    # database_url = 'mssql+pyodbc://username:password@mydsn'
     # pyodbc
-    # engine = db.create_engine('mssql+pyodbc://heat-admin:W13P$mLz@tamucs.onmicrosoft.com.database.windows.net:1433/Houston Weather')
     params = urllib.parse.quote_plus\
-    (r'Driver={ODBC Driver 13 for SQL Server};Server=tcp:innovationxheatextremes.database.windows.net,1433;Database=Houston Weather;Uid=heat-admin@innovationxheatextremes;Pwd=W13P$mLz;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+    (r'Driver={ODBC Driver 13 for SQL Server};Server=tcp:innovationxheatextremes.database.windows.net,1433;Database=Houston Weather;Uid=heat-######;Pwd=#####;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
     conn_str = 'mssql+pyodbc:///?odbc_connect={}'.format(params)
     engine = db.create_engine(conn_str, echo=True)
     xpath = '/html/body/app/city-history/city-history-layout/div/div[2]/section/div[2]/div[3]/div/div[1]/div/div/city-history-observation/div/div[2]/table'
     
     
-    for year in range(2018,2019):
+    for year in range(1978,2019):
         for month in range(1,13):
             URL = 'https://www.wunderground.com/history/monthly/us/tx/houston/KHOU/date/'
             date = str(year) + '-' + str(month)
